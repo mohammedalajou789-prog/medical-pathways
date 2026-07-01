@@ -25,7 +25,15 @@ export default function Scanner() {
   const [stats, setStats] = useState({ total: 0, entered: 0, not_entered: 0 })
   const scannerRef = useRef<Html5Qrcode | null>(null)
   const router = useRouter()
-
+useEffect(() => {
+  const checkAuth = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) { router.push('/admin/login'); return }
+    const { data: admin } = await supabase.from('admins').select('role').eq('id', user.id).single()
+    if (!admin) { router.push('/admin/login') }
+  }
+  checkAuth()
+}, [])
   useEffect(() => {
     fetchStats()
     return () => { stopScanner() }
