@@ -23,12 +23,9 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   const isLoginPage = request.nextUrl.pathname === '/admin/login'
 
+  // Only block non-logged-in users from admin pages
   if (!user && !isLoginPage) {
     return NextResponse.redirect(new URL('/admin/login', request.url))
-  }
-
-  if (user && isLoginPage) {
-    return NextResponse.redirect(new URL('/admin/dashboard', request.url))
   }
 
   return response
