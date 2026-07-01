@@ -20,7 +20,13 @@ export default function AdminLogin() {
     if (error) { setError('Invalid email or password'); setLoading(false); return }
     const { data: admin } = await supabase.from('admins').select('role').eq('id', data.user.id).single()
     if (!admin) { setError('You do not have access'); await supabase.auth.signOut(); setLoading(false); return }
-    if (admin.role === 'super_admin') { router.push('/admin/dashboard') } else { router.push('/admin/scanner') }
+    if (admin.role === 'super_admin') { 
+  router.refresh()
+  router.push('/admin/dashboard') 
+} else { 
+  router.refresh()
+  router.push('/admin/scanner') 
+}
   }
 
   return (
