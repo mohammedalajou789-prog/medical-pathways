@@ -125,26 +125,21 @@ export default function RegisterForm() {
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
         <div className="flex flex-col sm:flex-row">
           {/* Left - Branding (Desktop only) */}
-          <div className="hidden sm:flex sm:w-2/5 bg-gradient-to-b from-[#C41E3A] to-[#8B0000] p-10 flex-col items-center justify-center text-white">
+          <div className="flex sm:w-2/5 bg-gradient-to-b from-[#C41E3A] to-[#8B0000] p-6 sm:p-8 flex-col items-center justify-center text-white">
             <Logos />
             <h1 className="text-3xl font-bold text-white text-center mt-2">مسارات طبيب</h1>
             <p className="text-red-200 text-sm mt-2 text-center">Medical Pathways</p>
-            <div className="mt-8 text-center text-red-100 text-sm space-y-2">
-              <p>🏥 Register now to attend</p>
-              <p>📱 Get your QR Code instantly</p>
-              <p>🎓 Open to all medical students</p>
-            </div>
+           <div className="mt-4 sm:mt-8 text-center text-red-100 text-sm space-y-2 hidden sm:block">
+  <p>🏥 Register now to attend</p>
+  <p>📱 Get your QR Code instantly</p>
+  <p>🎓 Open to all medical students</p>
+</div>
           </div>
 
           {/* Right - Form */}
           <div className="sm:w-3/5 p-8">
             {/* Mobile Header */}
-            <div className="sm:hidden text-center mb-6">
-              <Logos />
-              <h1 className="text-2xl font-bold text-[#C41E3A]">مسارات طبيب</h1>
-              <p className="text-gray-500 text-sm mt-1">Medical Pathways</p>
-            </div>
-
+        
             <h2 className="text-xl font-bold text-gray-800 mb-6 hidden sm:block">Event Registration</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">

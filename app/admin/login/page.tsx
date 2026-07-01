@@ -33,7 +33,7 @@ export default function AdminLogin() {
         <div className="flex flex-col sm:flex-row">
 
           {/* Left - Branding */}
-          <div className="hidden sm:flex sm:w-2/5 bg-gradient-to-b from-[#C41E3A] to-[#8B0000] p-10 flex-col items-center justify-center text-white">
+          <div className="flex sm:w-2/5 bg-gradient-to-b from-[#C41E3A] to-[#8B0000] p-6 sm:p-10 flex-col items-center justify-center text-white">
             <div className="flex justify-center items-center gap-3 mb-6">
               <Image src="/logo1.jpg" alt="Logo 1" width={60} height={60} className="object-contain bg-white rounded-full p-1" />
               <Image src="/logo2.jpg" alt="Logo 2" width={80} height={80} className="object-contain bg-white rounded-full p-1" />
@@ -41,7 +41,7 @@ export default function AdminLogin() {
             </div>
             <h1 className="text-3xl font-bold text-white text-center">مسارات طبيب</h1>
             <p className="text-red-200 text-sm mt-2 text-center">Medical Pathways</p>
-            <div className="mt-8 text-center text-red-100 text-sm space-y-2">
+            <div className="mt-4 sm:mt-8 text-center text-red-100 text-sm space-y-2 hidden sm:block">
               <p>🔐 Secure Admin Access</p>
               <p>📊 Manage Registrations</p>
               <p>📱 Scan QR Codes</p>
@@ -51,15 +51,8 @@ export default function AdminLogin() {
           {/* Right - Form */}
           <div className="sm:w-3/5 p-8 flex flex-col justify-center">
             {/* Mobile Header */}
-            <div className="sm:hidden text-center mb-6">
-              <div className="flex justify-center items-center gap-3 mb-4">
-                <Image src="/logo1.jpg" alt="Logo 1" width={55} height={55} className="object-contain bg-white rounded-full p-1 shadow" />
-                <Image src="/logo2.jpg" alt="Logo 2" width={70} height={70} className="object-contain bg-white rounded-full p-1 shadow" />
-                <Image src="/logo3.jpg" alt="Logo 3" width={55} height={55} className="object-contain bg-white rounded-full p-1 shadow" />
-              </div>
-              <h1 className="text-2xl font-bold text-[#C41E3A]">مسارات طبيب</h1>
-              <p className="text-gray-500 text-sm mt-1">Medical Pathways</p>
-            </div>
+            
+        
 
             <h2 className="text-xl font-bold text-gray-800 mb-2 hidden sm:block">Admin Panel</h2>
             <p className="text-gray-400 text-sm mb-6 hidden sm:block">Sign in to access the dashboard</p>
