@@ -64,9 +64,9 @@ export default function RegisterForm() {
 
   const Logos = () => (
     <div className="flex justify-center items-center gap-4 mb-4">
-      <Image src="/logo1.jpg" alt="Logo 1" width={65} height={65} className="object-contain mix-blend-multiply" />
-      <Image src="/logo2.jpg" alt="Logo 2" width={85} height={85} className="object-contain mix-blend-multiply" />
-      <Image src="/logo3.jpg" alt="Logo 3" width={65} height={65} className="object-contain mix-blend-multiply" />
+      <Image src="/logo1.jpg" alt="Logo 1" width={65} height={65} className="object-contain bg-white rounded-full p-1" />
+      <Image src="/logo2.jpg" alt="Logo 2" width={85} height={85} className="object-contain bg-white rounded-full p-1" />
+      <Image src="/logo3.jpg" alt="Logo 3" width={65} height={65} className="object-contain bg-white rounded-full p-1" />
     </div>
   )
 
