@@ -118,11 +118,11 @@ export default function Scanner() {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
           {/* Scanner */}
-          <div className="bg-white rounded-2xl shadow p-6">
+          <div className="bg-white rounded-2xl shadow p-6 sm:col-span-1">
             <h2 className="font-bold text-lg mb-4 text-center text-[#C41E3A]">QR Scanner</h2>
-            <div id="qr-reader" className="w-full rounded-xl overflow-hidden mb-4" />
+            <div id="qr-reader" className="w-full rounded-xl overflow-hidden mb-4 sm:min-h-[300px]" />
             <div className="flex gap-3">
               {!scanning ? (
                 <button onClick={startScanner} className="flex-1 bg-[#C41E3A] text-white py-3 rounded-xl font-medium hover:bg-[#8B0000] transition">
