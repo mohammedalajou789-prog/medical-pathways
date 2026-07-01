@@ -18,6 +18,17 @@ type Student = {
 const englishOnly = /^[a-zA-Z0-9\s\-'.]*$/
 const jordanPhone = /^07[789]\d{7}$/
 
+const UNIVERSITIES = [
+  'The Hashemite University',
+  'The University of Jordan',
+  'Yarmouk University',
+  'Jordan University of Science and Technology',
+  "Mu'tah University",
+  'Al-Qabbah University for Medical Sciences',
+  'Ibn Sina University',
+  'Other',
+]
+
 export default function RegisterForm() {
   const [form, setForm] = useState({ full_name: '', phone: '', university: '', study_year: '', pathway: '' })
   const [fieldErrors, setFieldErrors] = useState({ full_name: '', phone: '', university: '' })
@@ -34,7 +45,7 @@ export default function RegisterForm() {
     }
   }, [student])
 
-  const handleTextChange = (field: 'full_name' | 'university', value: string) => {
+  const handleTextChange = (field: 'full_name', value: string) => {
     if (!englishOnly.test(value)) { setFieldErrors(prev => ({ ...prev, [field]: 'English characters only' })); return }
     setFieldErrors(prev => ({ ...prev, [field]: '' }))
     setForm(prev => ({ ...prev, [field]: value }))
@@ -159,13 +170,19 @@ export default function RegisterForm() {
                 {fieldErrors.phone
                   ? <p className="text-red-500 text-xs mt-1">{fieldErrors.phone}</p>
                   : <p className="text-gray-400 text-xs mt-1">Jordanian number only — format: 07XXXXXXXX</p>}
+                <p className="text-[#C41E3A] text-xs mt-1 font-medium">Please make sure this number is active on WhatsApp.</p>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">University</label>
-                <input type="text" required placeholder="Hashemite University"
+                <select required
                   className={`w-full border rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#C41E3A] ${fieldErrors.university ? 'border-red-400' : 'border-gray-300'}`}
-                  value={form.university} onChange={e => handleTextChange('university', e.target.value)} />
+                  value={form.university} onChange={e => setForm({ ...form, university: e.target.value })}>
+                  <option value="">Select University</option>
+                  {UNIVERSITIES.map(u => (
+                    <option key={u} value={u}>{u}</option>
+                  ))}
+                </select>
                 {fieldErrors.university && <p className="text-red-500 text-xs mt-1">{fieldErrors.university}</p>}
               </div>
 
