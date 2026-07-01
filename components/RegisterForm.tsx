@@ -158,7 +158,7 @@ export default function RegisterForm() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                <input type="tel" required placeholder="079..." maxLength={10}
+                <input type="tel" required placeholder="07..." maxLength={10}
                   className={`w-full border rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#C41E3A] ${fieldErrors.phone ? 'border-red-400' : 'border-gray-300'}`}
                   value={form.phone} onChange={e => handlePhoneChange(e.target.value)} />
                 {fieldErrors.phone
