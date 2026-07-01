@@ -21,11 +21,9 @@ export default function AdminLogin() {
     const { data: admin } = await supabase.from('admins').select('role').eq('id', data.user.id).single()
     if (!admin) { setError('You do not have access'); await supabase.auth.signOut(); setLoading(false); return }
     if (admin.role === 'super_admin') { 
-  router.refresh()
-  router.push('/admin/dashboard') 
+  window.location.href = '/admin/dashboard'
 } else { 
-  router.refresh()
-  router.push('/admin/scanner') 
+  window.location.href = '/admin/scanner'
 }
   }
 
