@@ -17,7 +17,15 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<'students' | 'admins'>('students')
   const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
-
+useEffect(() => {
+  const checkRole = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) { router.push('/admin/login'); return }
+    const { data: admin } = await supabase.from('admins').select('role').eq('id', user.id).single()
+    if (!admin || admin.role !== 'super_admin') { router.push('/admin/scanner') }
+  }
+  checkRole()
+}, [])
   useEffect(() => { fetchData() }, [])
 
   const fetchData = async () => {
