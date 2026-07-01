@@ -15,11 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "مسارات طبيب | Medical Pathways",
   description: "Medical Pathways Event Registration",
-  icons: {
-    icon: "/logo3.jpg",
-    apple: "/logo3.jpg",
-    shortcut: "/logo3.jpg",
-  },
+  icons: [
+    { rel: "icon", url: "/logo3.jpg", type: "image/jpeg" },
+    { rel: "apple-touch-icon", url: "/logo3.jpg" },
+  ],
 };
 
 export default function RootLayout({
