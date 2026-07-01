@@ -86,7 +86,7 @@ export default function Home() {
                 <input
                   type="tel"
                   required
-                  placeholder="079..."
+                  placeholder="07..."
                   maxLength={10}
                   className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#C41E3A] ${phoneError ? 'border-red-400' : 'border-gray-300'}`}
                   value={phone}
