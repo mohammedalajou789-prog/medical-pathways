@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: "مسارات طبيب | Medical Pathways",
   description: "Medical Pathways Event Registration",
   icons: [
-    { rel: "icon", url: "/logo3.jpg", type: "image/jpeg" },
-    { rel: "apple-touch-icon", url: "/logo3.jpg" },
+    { rel: "icon", url: "/favicon.png", type: "image/png" },
+    { rel: "apple-touch-icon", url: "/favicon.png" },
   ],
 };
 
