@@ -63,16 +63,20 @@ export default function Dashboard() {
     e.preventDefault()
     setAdminError('')
     setAdminSuccess('')
-    const { data, error } = await supabase.auth.admin?.createUser({
-      email: newAdmin.email,
-      password: newAdmin.password,
-      email_confirm: true
-    }) as any
-    if (error || !data?.user) {
-      setAdminError('Failed to create admin. Use Supabase dashboard to create the user first.')
+
+    const res = await fetch('/api/create-admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newAdmin)
+    })
+
+    const result = await res.json()
+
+    if (!res.ok) {
+      setAdminError(result.error || 'Failed to create admin')
       return
     }
-    await supabase.from('admins').insert({ id: data.user.id, full_name: newAdmin.full_name, email: newAdmin.email, role: 'admin' })
+
     setAdminSuccess('Admin created successfully!')
     setNewAdmin({ email: '', password: '', full_name: '' })
     fetchData()
