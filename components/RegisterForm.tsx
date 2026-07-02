@@ -26,6 +26,7 @@ const UNIVERSITIES = [
   "Mu'tah University",
   'Al-Qabbah University for Medical Sciences',
   'Ibn Sina University',
+  'Al-Balqa Applied University',
   'Other',
 ]
 
