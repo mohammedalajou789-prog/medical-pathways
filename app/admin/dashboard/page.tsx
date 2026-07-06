@@ -100,30 +100,49 @@ useEffect(() => {
   }
 
   const exportPDF = () => {
-    const entered = students.filter(s => s.status === 'ENTERED')
-    const rows = entered.map(s => `
-      <tr>
-        <td>${s.registration_number}</td>
-        <td>${s.full_name}</td>
-        <td>${s.phone}</td>
-        <td>${s.university}</td>
-        <td>${s.study_year}</td>
-        <td>${s.entry_time ? new Date(s.entry_time).toLocaleTimeString() : '-'}</td>
-      </tr>
-    `).join('')
-    const html = `
-      <html><head><title>Attendance Report</title>
-      <style>body{font-family:Arial;padding:20px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:8px;text-align:left}th{background:#C41E3A;color:white}h1{color:#C41E3A}</style>
-      </head><body>
-      <h1>Medical Pathways - Attendance Report</h1>
-      <p>Total Entered: ${entered.length} / ${students.length}</p>
-      <table><thead><tr><th>#</th><th>Name</th><th>Phone</th><th>University</th><th>Year</th><th>Entry Time</th></tr></thead>
-      <tbody>${rows}</tbody></table>
-      </body></html>
-    `
-    const win = window.open('', '_blank')
-    if (win) { win.document.write(html); win.document.close(); win.print() }
-  }
+  const rows = students.map(s => `
+    <tr>
+      <td>${s.registration_number}</td>
+      <td>${s.full_name}</td>
+      <td>${s.phone}</td>
+      <td>${s.university}</td>
+      <td>${s.study_year}</td>
+      <td>${s.pathway || '-'}</td>
+      <td style="color: ${s.status === 'ENTERED' ? 'green' : 'gray'}">
+        ${s.status === 'ENTERED' ? 'Entered' : 'Not Entered'}
+      </td>
+      <td>${s.entry_time ? new Date(s.entry_time).toLocaleTimeString() : '-'}</td>
+      <td>${s.pin_code}</td>
+    </tr>
+  `).join('')
+
+  const html = `
+    <html><head><title>All Students Report</title>
+    <style>
+      body { font-family: Arial; padding: 20px }
+      table { width: 100%; border-collapse: collapse }
+      th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 12px }
+      th { background: #C41E3A; color: white }
+      tr:nth-child(even) { background: #f9f9f9 }
+      h1 { color: #C41E3A }
+    </style>
+    </head><body>
+    <h1>Medical Pathways - All Registered Students</h1>
+    <p>Total: ${students.length} | Entered: ${stats.entered} | Not Entered: ${stats.not_entered}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Phone</th><th>University</th>
+          <th>Year</th><th>Pathway</th><th>Status</th><th>Entry Time</th><th>PIN</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </body></html>
+  `
+  const win = window.open('', '_blank')
+  if (win) { win.document.write(html); win.document.close(); win.print() }
+}
 
   const filtered = students.filter(s =>
     s.full_name.toLowerCase().includes(search.toLowerCase()) ||
